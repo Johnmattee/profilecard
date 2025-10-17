@@ -1,0 +1,300 @@
+/* CSS Variables for a clean, maintainable style */
+        :root {
+            --primary-color: #4f46e5; /* Indigo-600 */
+            --primary-light: #eef2ff; /* Indigo-50 */
+            --secondary-color: #1f2937; /* Gray-800 */
+            --text-color: #374151; /* Gray-700 */
+            --background-color: #f3f4f6; /* Gray-100 */
+            --green-color: #10b981;
+            --red-color: #ef4444;
+        }
+
+        /* Base Body and Typography */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--background-color);
+            min-height: 100vh;
+            padding: 1rem;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start; /* Align to top to prevent massive jump on load */
+        }
+
+        /* --- Profile Card Layout --- */
+        .profile-card {
+            background-color: white;
+            padding: 2.5rem;
+            border-radius: 1rem;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+            max-width: 960px;
+            margin: 2rem auto;
+            border-top: 4px solid var(--primary-color);
+            display: flex;
+            flex-direction: column; /* Stacked on Mobile (default) */
+            gap: 2rem;
+            width: 100%;
+        }
+
+        /* Desktop Layout (min-width: 768px - Tablet/Desktop Breakpoint) */
+        @media (min-width: 768px) {
+            .profile-card {
+                flex-direction: row;
+                gap: 3rem;
+                padding: 4rem;
+                align-items: flex-start;
+            }
+            .left-column {
+                width: 33.333%;
+                flex-shrink: 0;
+            }
+            .right-column {
+                width: 66.666%;
+                flex-grow: 1;
+            }
+        }
+
+        /* --- Left Column - User Info --- */
+        .left-column {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        @media (min-width: 768px) {
+            .left-column {
+                align-items: flex-start;
+                text-align: left;
+            }
+        }
+
+        /* Avatar */
+        .avatar-figure {
+            width: 128px;
+            height: 128px;
+            margin-bottom: 1.5rem;
+        }
+        .avatar-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 4px solid var(--primary-color);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        .avatar-img:hover {
+            transform: scale(1.05);
+        }
+
+        /* Name/Header */
+        .user-name {
+            font-size: 1.875rem;
+            font-weight: 800;
+            color: var(--secondary-color);
+            margin-bottom: 0.25rem;
+            line-height: 1.2;
+        }
+        .user-title {
+            font-size: 1.125rem;
+            font-weight: 500;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        /* Time Counter */
+        .time-section {
+            margin-top: 1rem;
+            width: 100%;
+        }
+        .time-label {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--text-color);
+            margin-bottom: 0.5rem;
+            border-bottom: 1px solid #e5e7eb;
+            padding-bottom: 0.25rem;
+        }
+        .time-display {
+            display: block;
+            font-size: 1.25rem;
+            font-family: 'Roboto Mono', monospace;
+            color: var(--secondary-color);
+            background-color: var(--primary-light);
+            padding: 0.75rem;
+            border-radius: 0.75rem;
+            box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06);
+            border: 1px solid #c7d2fe;
+            text-align: center;
+        }
+        @media (min-width: 768px) {
+             .time-display { font-size: 1.5rem; text-align: left; }
+        }
+
+
+        /* Image Upload Controls */
+        .image-controls {
+            margin-top: 1.5rem;
+            padding-top: 1rem;
+            border-top: 1px dashed #d1d5db;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            width: 100%;
+        }
+        .image-controls input[type="file"], 
+        .image-controls input[type="text"] {
+            padding: 0.5rem;
+            border: 1px solid #d1d5db;
+            border-radius: 0.375rem;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .image-controls button {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 0.375rem;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.2s, box-shadow 0.2s;
+        }
+        .image-controls button:hover {
+            background-color: #3730a3;
+        }
+        .image-controls button:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.4);
+        }
+        .url-input-group {
+            display: flex;
+            gap: 0.5rem;
+        }
+        .url-input-group input { flex-grow: 1; }
+        .url-input-group button { flex-shrink: 0; }
+        
+        /* --- Right Column - Content --- */
+        .section-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+            margin-bottom: 0.75rem;
+            padding-bottom: 0.25rem;
+            border-bottom: 2px solid #e5e7eb;
+        }
+
+        /* Bio */
+        .bio-section {
+            margin-bottom: 2rem;
+        }
+        .bio-text {
+            color: var(--text-color);
+            line-height: 1.625;
+            background-color: #f9fafb;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            border: 1px solid #e5e7eb;
+            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+        }
+
+        /* Social Links */
+        .social-nav {
+            margin-bottom: 2rem;
+        }
+        .social-links {
+            display: flex;
+            flex-wrap: wrap;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            gap: 0.75rem;
+        }
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-decoration: none;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.2s, box-shadow 0.2s, transform 0.2s;
+            cursor: pointer;
+            border: 1px solid transparent;
+        }
+        .social-link:hover, .social-link:focus {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        .social-link svg {
+            width: 1.25rem;
+            height: 1.25rem;
+            margin-right: 0.5rem;
+            fill: currentColor;
+        }
+
+        /* Specific Link Colors */
+        .github {
+            color: #333;
+            background-color: white;
+            border-color: #d1d5db;
+        }
+        .github:hover {
+            background-color: #f3f4f6;
+        }
+        .linkedin {
+            color: white;
+            background-color: #2563eb;
+        }
+        .linkedin:hover {
+            background-color: #1d4ed8;
+        }
+        .twitter {
+            color: #0c4a6e;
+            background-color: #f0f9ff;
+            border-color: #7dd3fc;
+        }
+        .twitter:hover {
+            background-color: #e0f2fe;
+        }
+
+        /* --- Hobbies and Dislikes Grid --- */
+        .list-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+        /* Small Screen/Tablet Breakpoint for 2-column list */
+        @media (min-width: 640px) {
+            .list-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* Lists */
+        .list-style {
+            color: var(--text-color);
+            line-height: 1.5;
+            padding-left: 1.25rem;
+            list-style-type: disc;
+            margin-top: 0.5rem;
+            margin-left: 0;
+        }
+        .list-style li {
+            margin-bottom: 0.5rem;
+        }
+        .hobbies .section-title {
+            border-bottom: 2px solid var(--green-color);
+        }
+        .hobbies .list-style li::marker {
+            color: var(--green-color);
+        }
+        .dislikes .section-title {
+            border-bottom: 2px solid var(--red-color);
+        }
+        .dislikes .list-style li::marker {
+            color: var(--red-color);
+        }
