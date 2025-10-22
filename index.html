@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multi-Page Profile App</title>
+    <!-- Use Inter font from Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Roboto+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Profile Card Root Container -->
+    <div class="app-container">
+        <!-- Persistent Navigation (Header) -->
+        <header class="main-nav">
+            <nav aria-label="Main Application Navigation">
+                <ul>
+                    <li><button id="nav-profile" class="nav-button active" data-page="profile">Profile</button></li>
+                    <li><button id="nav-about" class="nav-button" data-page="about">About Me</button></li>
+                    <li><button id="nav-contact" class="nav-button" data-page="contact">Contact Us</button></li>
+                </ul>
+            </nav>
+        </header>
+
+        <div class="page-content">
+
+            <!-- ============================================= -->
+            <!-- 1. PROFILE PAGE (Now Page-Focused Layout) -->
+            <!-- ============================================= -->
+            <!-- The main element for the profile page -->
+            <main id="page-profile" class="page active" data-testid="test-profile-card" aria-labelledby="profile-heading">
+                <h1 id="profile-heading" class="user-name" style="font-size: 2.25rem; margin-bottom: 2rem;">Professional Profile</h1>
+                
+                <div class="profile-card-content">
+                    <div class="left-column">
+                        <figure>
+                            <img data-testid="test-user-avatar" id="avatar-image"
+                                 src="https://placehold.co/128x128/4F46E5/FFFFFF?text=TA"
+                                 alt="Professional headshot of the user Taiwo Ajayi"
+                                 class="avatar-img"
+                                 onerror="this.onerror=null; this.src='https://placehold.co/128x128/9CA3AF/FFFFFF?text=User';"
+                            >
+                        </figure>
+
+                        <!-- Image Upload Controls -->
+                        <div class="image-controls">
+                            <label for="file-upload" style="font-weight: normal; margin-bottom: 0;">Change Avatar:</label>
+                            <input type="file" id="file-upload" accept="image/*" aria-label="Upload a new profile picture from file">
+                            <div class="url-input-group">
+                                <input type="text" id="url-input" placeholder="Paste image URL..." aria-label="Image URL input">
+                                <button id="set-url-btn" type="button">Set URL</button>
+                            </div>
+                        </div>
+
+                        <!-- Name and Time -->
+                        <header style="margin-top: 1.5rem; width: 100%;">
+                            <h2 data-testid="test-user-name" class="user-name">Taiwo Ajayi</h2>
+                            <p class="user-title">
+                    Frontend Developer</p>
+                        </header>
+
+                        <!-- Current Time Section -->
+                         <section class="time-section">
+                 <h3 class="time-label">Live Time (MS)</h3>
+                 <!-- The time element is marked as a block for better readability -->
+                 <time data-testid="test-user-time" datetime="" aria-label="Current time in milliseconds"
+                       class="time-display">
+                     
+                 </time>
+            </section>
+                    </div>
+
+                    <div>
+                        <!-- Short Biography -->
+                        <section style="margin-bottom: 2rem;">
+                            <h3 class="section-title" style="border-bottom-color: #9ca3af;">Bio Summary</h3>
+                            <p data-testid="test-user-bio" class="bio-text">
+                                I am a passionate software engineer specializing in building highly accessible, performant, and responsive web applications. My focus is on utilizing modern standards, semantic HTML, and advanced CSS to create user experiences that truly work for everyone, regardless of their device or ability.
+                            </p>
+                        </section>
+
+                        <!-- Social Links (Semantic Navigation) -->
+                        <nav aria-label="Social Media Links" style="margin-bottom: 2rem;">
+                            <h3 class="section-title" style="border-bottom-color: var(--primary-color);">Connect</h3>
+                            <ul data-testid="test-user-social-links" style="display: flex; flex-wrap: wrap; list-style: none; padding: 0; margin: 0; gap: 0.75rem;">
+                                <li><a data-testid="test-user-social-github" href="https://github.com/johnmattee" target="_blank" rel="noopener noreferrer" class="social-link" style="color: #333; background-color: #f3f4f6; border: 1px solid #d1d5db;">GitHub</a></li>
+                                <li><a data-testid="test-user-social-linkedin" href="https://www.linkedin.com/in/ajayi-john-dev/" target="_blank" rel="noopener noreferrer" class="social-link" style="color: white; background-color: #2563eb;">LinkedIn</a></li>
+                                <li><a data-testid="test-user-social-twitter" href="https://x.com/ajayitaiwojohn1" target="_blank" rel="noopener noreferrer" class="social-link" style="color: #0c4a6e; background-color: #e0f2fe; border: 1px solid #7dd3fc;">X (Twitter)</a></li>
+                            </ul>
+                        </nav>
+
+                        <!-- Hobbies and Dislikes Grid -->
+                        <div class="grid-list">
+                            <section data-testid="test-user-hobbies" class="hobbies">
+                                <h3 class="section-title">Hobbies</h3>
+                                <ul class="list-style">
+                                    <li>Open source contributions</li>
+                                    <li>Hiking and trail running</li>
+                                    <li>Playing the piano</li>
+                                    <li>Reading sci-fi novels</li>
+                                </ul>
+                            </section>
+
+                            <section data-testid="test-user-dislikes" class="dislikes">
+                                <h3 class="section-title">Dislikes</h3>
+                                <ul class="list-style">
+                                    <li>Fixed-pixel widths</li>
+                                    <li>Inaccessible components</li>
+                                    <li>Unnecessary bundle bloat</li>
+                                    <li>Horizontal scrolling</li>
+                                </ul>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+            </main>
+
+            <!-- ============================================= -->
+            <!-- 2. ABOUT ME PAGE -->
+            <!-- ============================================= -->
+            <main id="page-about" class="page" aria-labelledby="about-heading">
+                <h1 id="about-heading" class="user-name" style="font-size: 2.25rem; margin-bottom: 2rem; color: var(--primary-color);">Reflections and Goals</h1>
+
+                <section class="about-section" data-testid="test-about-bio">
+                    <h2>My Current Biography (Expanded)</h2>
+                    <p>I started my journey in frontend development focusing on pure web standards. I believe a strong foundation in semantic HTML and performance-optimized CSS is key to building durable and user-friendly software. I enjoy diving into complex UI problems and always prioritize the end-user experience, especially concerning accessibility and mobile-first design.</p>
+                </section>
+
+                <section class="about-section" data-testid="test-about-goals">
+                    <h2>Goals in this Program</h2>
+                    <ul class="list-style" style="list-style-type: none; padding-left: 0;">
+                        <li>**1. Master Advanced JS Patterns:** Move beyond basic DOM manipulation to master modern module patterns and state management.</li>
+                        <li>**2. Deepen CSS Expertise:** Explore advanced layout techniques like CSS Subgrid and container queries.</li>
+                        <li>**3. Contribute to Open Source:** Successfully submit and merge a pull request to a major open-source project.</li>
+                    </ul>
+                </section>
+
+                <section class="about-section" data-testid="test-about-confidence">
+                    <h2>Areas of Low Confidence</h2>
+                    <p>My lowest confidence area is currently **complex backend security protocols**. While I understand the client-side authentication flow, implementing robust, secure API gateway validation and authorization from scratch is an area I need to practice more. I often worry about missing an edge case vulnerability.</p>
+                </section>
+
+                <section class="about-section" data-testid="test-about-future-note">
+                    <h2>Note to Future Self</h2>
+                    <p>Dear Future Javier, remember this feeling of struggle and the pride in solving those initial routing and validation challenges using pure JavaScript. Don't stop learning, and don't get too comfortable relying solely on frameworks. Always go back to the fundamentals. Also, take a break!</p>
+                </section>
+
+                 <section class="about-section" data-testid="test-about-extra">
+                    <h2>Extra Thoughts on Web Standards</h2>
+                    <p>The web platform is incredibly powerful, and it's easy to forget how much can be achieved without huge dependencies. I'm grateful for this task forcing a return to fundamentals. It reinforces the principle that performance starts with efficient, clean markup and styling.</p>
+                </section>
+            </main>
+
+
+            <!-- ============================================= -->
+            <!-- 3. CONTACT US PAGE -->
+            <!-- ============================================= -->
+            <main id="page-contact" class="page" aria-labelledby="contact-heading">
+                <h1 id="contact-heading" class="user-name" style="font-size: 2.25rem; margin-bottom: 2rem; color: var(--error-color);">Get In Touch</h1>
+
+                <!-- Success Message Container (Initially hidden) -->
+                <div id="contact-success" data-testid="test-contact-success" class="success-message" role="status" style="display: none;">
+                    Thank you! Your message has been successfully submitted. I will respond soon.
+                    <button onclick="resetContactForm()" class="submit-button" style="background-color: var(--success-color); margin-top: 1rem;">Send Another Message</button>
+                </div>
+
+                <form id="contact-form" class="contact-form" novalidate>
+
+                    <!-- Full Name -->
+                    <div class="form-group" id="group-name">
+                        <label for="contact-name">Full Name *</label>
+                        <input type="text" id="contact-name" data-testid="test-contact-name" name="name" required aria-required="true">
+                        <!-- Error message tied via aria-describedby in JS -->
+                        <p class="error-message" id="error-name" data-testid="test-contact-error-name" aria-atomic="true" style="display: none;"></p>
+                    </div>
+
+                    <!-- Email -->
+                    <div class="form-group" id="group-email">
+                        <label for="contact-email">Email Address *</label>
+                        <input type="email" id="contact-email" data-testid="test-contact-email" name="email" required aria-required="true">
+                        <p class="error-message" id="error-email" data-testid="test-contact-error-email" aria-atomic="true" style="display: none;"></p>
+                    </div>
+
+                    <!-- Subject (Full width) -->
+                    <div class="form-group full-width" id="group-subject">
+                        <label for="contact-subject">Subject *</label>
+                        <input type="text" id="contact-subject" data-testid="test-contact-subject" name="subject" required aria-required="true">
+                        <p class="error-message" id="error-subject" data-testid="test-contact-error-subject" aria-atomic="true" style="display: none;"></p>
+                    </div>
+
+                    <!-- Message -->
+                    <div class="form-group full-width" id="group-message">
+                        <label for="contact-message">Message * (Min 10 characters)</label>
+                        <textarea id="contact-message" data-testid="test-contact-message" name="message" rows="5" required aria-required="true"></textarea>
+                        <p class="error-message" id="error-message" data-testid="test-contact-error-message" aria-atomic="true" style="display: none;"></p>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" data-testid="test-contact-submit" class="submit-button">Send Message</button>
+                </form>
+            </main>
+        </div>
+    </div>
+
+    <script src="index.js"></script>
+</body>
+</html>
